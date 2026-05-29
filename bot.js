@@ -272,10 +272,10 @@ Important rules for comparisons:
 
   const data = await response.json();
 
-  if (data.error) {
-    console.error("Claude error:", data.error);
-    return "Sorry, I had trouble with that. Please try again!";
-  }
+if (data.error) {
+    console.error("Claude error:", JSON.stringify(data.error));
+    return `Error: ${data.error.type} — ${data.error.message}`;
+}
 
   const reply = data.content
     .filter((block) => block.type === "text")
